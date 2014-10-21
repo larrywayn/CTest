@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Sascha
-Date                   :=10/17/14
+Date                   :=10/22/14
 CodeLitePath           :="F:\Programme\CodeLite"
 LinkerName             :=F:/Programme/MiniGW/bin/g++.exe 
 SharedObjectLinkerName :=F:/Programme/MiniGW/bin/g++.exe -shared -fPIC
@@ -37,13 +37,13 @@ PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
 RcCompilerName         :=F:/Programme/MiniGW/bin/windres.exe 
-LinkOptions            :=  
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
+LinkOptions            :=   -mwindows
+IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)D:/glfw32/include/ $(IncludeSwitch)D:/glfw64/include/ 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
-LibPath                := $(LibraryPathSwitch). 
+Libs                   := $(LibrarySwitch)opengl32 $(LibrarySwitch)gdi32 $(LibrarySwitch)glfw3 
+ArLibs                 :=  "opengl32.dll" "gdi32.dll" "glfw3" 
+LibPath                := $(LibraryPathSwitch). $(LibraryPathSwitch)D:/glfw32/lib $(LibraryPathSwitch)D:/glfw64/lib 
 
 ##
 ## Common variables
@@ -53,7 +53,7 @@ AR       := F:/Programme/MiniGW/bin/ar.exe rcu
 CXX      := F:/Programme/MiniGW/bin/g++.exe 
 CC       := F:/Programme/MiniGW/bin/gcc.exe 
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
-CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
+CFLAGS   :=  -g -Wall -O0  $(Preprocessors)
 ASFLAGS  := 
 AS       := F:/Programme/MiniGW/bin/as.exe 
 
