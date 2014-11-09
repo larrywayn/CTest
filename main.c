@@ -1,9 +1,46 @@
 #include <stdlib.h> 
-
+#include <stdio.h>
 #define GLFW_DLL
 #include <GLFW/glfw3.h>
+#include "Math3D.h"
+#include "Vektor4.h"
 
 int WinMain(int argc, char **argv) {
+	
+	Vektor4 *v1 =newVektor4(),*v2 = newVektor4(), *v3= newVektor4();
+	v1->x = 2;
+	v1->y = 0;
+	v1->z = 2;
+	v1->w = 1;
+	
+	v2->x = 0;
+	v2->y = 2;
+	v2->z = 2;
+	v2->w = 1;
+	
+	v3->x = 0;
+	v3->y = 0;
+	v3->z = 0;
+	v3->w = 0;
+	addiereVV(v1,v2,v3);
+	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	free(v3);
+	
+	v3= newVektor4();
+	subVV(v1,v2,v3);
+	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	free(v3);
+	
+	double skal = skalarV(v1);
+	printf("Skalar V1: %e \n", skal);	
+	
+	v3= newVektor4();
+	kreuzVV(v1,v2,v3);
+	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	
+	free(v1);
+	free(v2);
+	free(v3);
 	GLFWwindow* window;
 	if (!glfwInit()) {
 		exit(EXIT_FAILURE);

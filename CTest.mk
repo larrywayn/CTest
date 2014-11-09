@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Sascha
-Date                   :=10/22/14
+Date                   :=11/09/14
 CodeLitePath           :="F:\Programme\CodeLite"
 LinkerName             :=F:/Programme/MiniGW/bin/g++.exe 
 SharedObjectLinkerName :=F:/Programme/MiniGW/bin/g++.exe -shared -fPIC
@@ -37,7 +37,7 @@ PCHCompileFlags        :=
 MakeDirCommand         :=makedir
 RcCmpOptions           := 
 RcCompilerName         :=F:/Programme/MiniGW/bin/windres.exe 
-LinkOptions            :=   -mwindows
+LinkOptions            :=  
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)D:/glfw32/include/ $(IncludeSwitch)D:/glfw64/include/ 
 IncludePCH             := 
 RcIncludePath          := 
@@ -63,7 +63,7 @@ AS       := F:/Programme/MiniGW/bin/as.exe
 ##
 CodeLiteDir:=F:\Programme\CodeLite
 UNIT_TEST_PP_SRC_DIR:=F:\Programme\Cunit
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) 
 
 
 
@@ -97,6 +97,22 @@ $(IntermediateDirectory)/main.c$(DependSuffix): main.c
 
 $(IntermediateDirectory)/main.c$(PreprocessSuffix): main.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.c$(PreprocessSuffix) "main.c"
+
+$(IntermediateDirectory)/Math3D.c$(ObjectSuffix): Math3D.c $(IntermediateDirectory)/Math3D.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Math3D.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Math3D.c$(DependSuffix): Math3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Math3D.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Math3D.c$(DependSuffix) -MM "Math3D.c"
+
+$(IntermediateDirectory)/Math3D.c$(PreprocessSuffix): Math3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Math3D.c$(PreprocessSuffix) "Math3D.c"
+
+$(IntermediateDirectory)/Vektor4.c$(ObjectSuffix): Vektor4.c $(IntermediateDirectory)/Vektor4.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Vektor4.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Vektor4.c$(DependSuffix): Vektor4.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Vektor4.c$(DependSuffix) -MM "Vektor4.c"
+
+$(IntermediateDirectory)/Vektor4.c$(PreprocessSuffix): Vektor4.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Vektor4.c$(PreprocessSuffix) "Vektor4.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
