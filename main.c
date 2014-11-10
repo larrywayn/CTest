@@ -23,12 +23,12 @@ int WinMain(int argc, char **argv) {
 	v3->z = 0;
 	v3->w = 0;
 	addiereVV(v1,v2,v3);
-	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	printf("Vektor 3: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
 	free(v3);
 	
 	v3= newVektor4();
 	subVV(v1,v2,v3);
-	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	printf("Vektor 3: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
 	free(v3);
 	
 	double skal = skalarV(v1);
@@ -36,7 +36,17 @@ int WinMain(int argc, char **argv) {
 	
 	v3= newVektor4();
 	kreuzVV(v1,v2,v3);
-	printf("Vektor 3 Member: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	printf("Vektor 3: %e, %e, %e, %e \n", v3->x,v3->y,v3->z,v3->w);	
+	
+
+	invertiereV(v2);
+	printf("Vektor 2: %e, %e, %e, %e \n", v2->x,v2->y,v2->z,v2->w);	
+	
+	skaliereV(v2, 2,3,4,5);
+	printf("Vektor 2: %e, %e, %e, %e \n", v2->x,v2->y,v2->z,v2->w);	
+	
+	double lang = laengeV(v2);
+	printf("Laenge V2: %e \n", lang);	
 	
 	free(v1);
 	free(v2);

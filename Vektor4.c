@@ -1,6 +1,7 @@
 #include <stdlib.h> 
 #include <stdio.h>
 #include "Vektor4.h"
+#include <math.h>
 
 Vektor4* newVektor4(){
 	Vektor4 *initV = malloc(sizeof(*initV));
@@ -43,4 +44,30 @@ void kreuzVV(Vektor4* l, Vektor4* r, Vektor4* to){
 	to->y = (l->z * r->x) - (l->x * r->z);
 	to->z = (l->x * r->y) - (l->y * r->x);
 	to->w = (l->w + r->w);
+};
+
+
+void invertiereV(Vektor4* v){
+	v->x *= -1.0; 
+	v->y *= -1.0; 
+	v->z *= -1.0; 
+	v->w *= -1.0; 
+};
+
+
+void skaliereV(Vektor4* v, double x, double y, double z, double w){
+	v->x *= x; 
+	v->y *= y; 
+	v->z *= z; 
+	v->w *= w; 
+};
+
+double laengeV(Vektor4* v){
+	double erg = pow(v->x,2)+pow(v->y,2)+pow(v->z,2)+pow(v->w,2);	
+	printf("Erg V2: %e \n", erg);	
+	 if (erg > 0) {
+        return sqrt(erg);
+    } else {
+        return 1.0;
+    }
 };
