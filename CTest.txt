@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/Math3D.c.o ./Debug/Vektor4.c.o   
+./Debug/main.c.o ./Debug/Math3D.c.o ./Debug/Vektor4.c.o ./Debug/Quaternion.c.o   

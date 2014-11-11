@@ -12,6 +12,10 @@ Vektor4* newVektor4(){
 	return initV;
 };
 
+void zeigeV(Vektor4* to){	
+	printf("Vektor x: %e, y: %e, z: %e, w: %e \n", to->x,to->y,to->z,to->w);	
+};
+	
 void addiereVV(Vektor4* l, Vektor4* r, Vektor4* to){
 	to->x = l->x+r->x;
 	to->y = l->y+r->y;

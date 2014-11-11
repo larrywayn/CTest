@@ -25,6 +25,8 @@
     <File Name="Math3D.h"/>
     <File Name="Vektor4.h"/>
     <File Name="Vektor4.c"/>
+    <File Name="Quaternion.c"/>
+    <File Name="Quaternion.h"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

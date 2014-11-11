@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Sascha
-Date                   :=11/10/14
+Date                   :=11/11/14
 CodeLitePath           :="F:\Programme\CodeLite"
 LinkerName             :=F:/Programme/MiniGW/bin/g++.exe 
 SharedObjectLinkerName :=F:/Programme/MiniGW/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := F:/Programme/MiniGW/bin/as.exe
 ##
 CodeLiteDir:=F:\Programme\CodeLite
 UNIT_TEST_PP_SRC_DIR:=F:\Programme\Cunit
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) $(IntermediateDirectory)/Quaternion.c$(ObjectSuffix) 
 
 
 
@@ -113,6 +113,14 @@ $(IntermediateDirectory)/Vektor4.c$(DependSuffix): Vektor4.c
 
 $(IntermediateDirectory)/Vektor4.c$(PreprocessSuffix): Vektor4.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Vektor4.c$(PreprocessSuffix) "Vektor4.c"
+
+$(IntermediateDirectory)/Quaternion.c$(ObjectSuffix): Quaternion.c $(IntermediateDirectory)/Quaternion.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Quaternion.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Quaternion.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Quaternion.c$(DependSuffix): Quaternion.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Quaternion.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Quaternion.c$(DependSuffix) -MM "Quaternion.c"
+
+$(IntermediateDirectory)/Quaternion.c$(PreprocessSuffix): Quaternion.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Quaternion.c$(PreprocessSuffix) "Quaternion.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

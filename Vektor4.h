@@ -10,6 +10,7 @@ struct Vektor4 {
 };
 
 Vektor4* newVektor4();
+void zeigeV(Vektor4* to);
 void addiereVV(Vektor4* l, Vektor4* r, Vektor4* to);
 void subVV(Vektor4* l, Vektor4* r, Vektor4* to);
 void mulVV(Vektor4* l, Vektor4* r, Vektor4* to);
