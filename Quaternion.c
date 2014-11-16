@@ -46,33 +46,68 @@ void multipliziereQQ(Quaternion* l, Quaternion* r, Quaternion* to){
     to->w = (aw * bw - ax * bx - ay * by - az * bz);
 };
 
+void multipliziereQV(Quaternion* q, Vektor4* v, Vektor4* to) {
+    double x = q->x;
+    double y = q->y;
+    double z = q->z;
+    double a00 = q->w * q->w;
+    double a01 = q->w * x;
+    double a02 = q->w * y;
+    double a03 = q->w * z;
+    double a11 = x * x;
+    double a12 = x * y;
+    double a13 = x * z;
+    double a22 = y * y;
+    double a23 = y * z;
+    double a33 = z * z;
+    to->x = ((v->x * q->skalierung_x) * (+a00 + a11 - a22 - a33) + 2.0 * (a12 * (v->y * q->skalierung_y) + a13 * (v->z * q->skalierung_z) + a02 * (v->z * q->skalierung_z) - a03 * (v->y * q->skalierung_y)));
+    to->y = ((v->y * q->skalierung_y) * (+a00 - a11 + a22 - a33) + 2.0 * (a12 * (v->x * q->skalierung_x) + a23 * (v->z * q->skalierung_z) + a03 * (v->x * q->skalierung_x) - a01 * (v->z * q->skalierung_z)));
+	to->z = ((v->z * q->skalierung_z) * (+a00 - a11 - a22 + a33) + 2.0 * (a13 * (v->x * q->skalierung_x) + a23 * (v->y * q->skalierung_y) - a02 * (v->x * q->skalierung_x) + a01 * (v->y * q->skalierung_y)));
+	to->w = 1.0;
+};
+
+double holWinkelQ(Quaternion* q){
+	 return (((acos(q->w) * 2.0) * M_PI) / 180.0);
+}
+
+void invertiereQ(Quaternion* q){
+	normalisiereQ(q);
+	konjuganteQ(q);
+}
+
+double magnitudeQ(Quaternion* q){
+	double erg = ( q->x *  q->x) + ( q->y *  q->y) + ( q->z *  q->z) + ( q->w *  q->w);
+    if (erg > 0.0) {
+        return sqrt(erg);
+    } else {
+        return 1.0;
+    }
+}
+
+void normalisiereQ(Quaternion* q){
+	double mag = magnitudeQ(q);
+    if (mag == 0.0) {
+        q->w = 1.0;
+        q->x = 0.0;
+        q->y = 0.0;
+        q->z = 0.0;
+    } else {
+        mag = 1.0 / mag;
+        q->w *= mag;
+        q->x *= mag;
+        q->y *= mag;
+        q->z *= mag;
+    }
+}
+
+void konjuganteQ(Quaternion* q){
+    q->x = -q->x;
+    q->y = -q->y;
+    q->z = -q->z;
+}
+
 /*
-Quaternion.prototype.multiplikationVR = function(vektor) {
-    var tmpVektor = new Vektor4();
-    var x = this.x;
-    var y = this.y;
-    var z = this.z;
-    var a00 = this.w * this.w;
-    var a01 = this.w * x;
-    var a02 = this.w * y;
-    var a03 = this.w * z;
-    var a11 = x * x;
-    var a12 = x * y;
-    var a13 = x * z;
-    var a22 = y * y;
-    var a23 = y * z;
-    var a33 = z * z;
-    tmpVektor.x = ((vektor.x * this.SkalierungX) * (+a00 + a11 - a22 - a33) + 2.0 * (a12 * (vektor.y * this.SkalierungY) + a13 * (vektor.z * this.SkalierungZ) + a02 * (vektor.z * this.SkalierungZ) - a03 * (vektor.y * this.SkalierungY)));
-    tmpVektor.y = ((vektor.y * this.SkalierungY) * (+a00 - a11 + a22 - a33) + 2.0 * (a12 * (vektor.x * this.scal.this.SkalierungX) + a23 * (vektor.z * this.SkalierungZ) + a03 * (vektor.x * this.scal.this.SkalierungX) - a01 * (vektor.z * this.SkalierungZ)));
-    tmpVektor.z = ((vektor.z * this.SkalierungZ) * (+a00 - a11 - a22 + a33) + 2.0 * (a13 * (vektor.x * this.scal.this.SkalierungX) + a23 * (vektor.y * this.SkalierungY) - a02 * (vektor.x * this.scal.this.SkalierungX) + a01 * (vektor.y * this.SkalierungY)));
-    tmpVektor.w = 1.0;
-    return tmpVektor;
-};
-Quaternion.prototype.setzSkalierung = function(skalierungX, skalierungY, skalierungZ) {
-    this.SkalierungX = (skalierungX) ? parseFloat(skalierungX) : 1.0;
-    this.SkalierungY = (skalierungY) ? parseFloat(skalierungY) : 1.0;
-    this.SkalierungZ = (skalierungZ) ? parseFloat(skalierungZ) : 1.0;
-};
+ * Falls nötig im Shader
 Quaternion.prototype.erzeugeMatrix = function(vektor) {
     var matrixArray = [];
     var xy = this.x * this.y;
@@ -102,42 +137,4 @@ Quaternion.prototype.erzeugeMatrix = function(vektor) {
     matrixArray[15] = 1.0;
     return matrixArray;
 };
-
-Quaternion.prototype.holWinkel = function() {
-    return (((Math.acos(this.w) * 2.0) * Math.PI) / 180.0);
-};
-Quaternion.prototype.invertiere = function() {
-    this.normalisiere();
-    this.konjugante();
-};
-Quaternion.prototype.magnitude = function() {
-    var erg = ( this.x * this.x) + (this.y * this.y) + (this.z * this.z) + (this.w * this.w);
-    if (erg > 0) {
-        return Math.sqrt(erg);
-    } else {
-        return 1.0;
-    }
-};
-Quaternion.prototype.normalisiere = function() {
-    var mag = this.magnitude();
-    if (mag === 0.0) {
-        this.w = 1.0;
-        this.x = 0.0;
-        this.y = 0.0;
-        this.z = 0.0;
-    } else {
-        mag = 1.0 / mag;
-        this.w *= mag;
-        this.x *= mag;
-        this.y *= mag;
-        this.z *= mag;
-    }
-};
-Quaternion.prototype.konjugante = function() {
-    this.x = -this.x;
-    this.y = -this.y;
-    this.z = -this.z;
-};
-if (ENGINE_LOGGING) {
-    console.log('Quaternion Class geladen');
-}*/
+*/

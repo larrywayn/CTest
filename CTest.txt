@@ -1,1 +1,1 @@
-./Debug/main.c.o ./Debug/Math3D.c.o ./Debug/Vektor4.c.o ./Debug/Quaternion.c.o   
+./Debug/main.c.o ./Debug/Math3D.c.o ./Debug/Vektor4.c.o ./Debug/Quaternion.c.o ./Debug/Shader3D.c.o ./Debug/Onjekt3D.c.o ./Debug/Geometrien3D.c.o ./Debug/Kamera3D.c.o   

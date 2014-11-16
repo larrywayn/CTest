@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Sascha
-Date                   :=11/11/14
+Date                   :=11/16/14
 CodeLitePath           :="F:\Programme\CodeLite"
 LinkerName             :=F:/Programme/MiniGW/bin/g++.exe 
 SharedObjectLinkerName :=F:/Programme/MiniGW/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := F:/Programme/MiniGW/bin/as.exe
 ##
 CodeLiteDir:=F:\Programme\CodeLite
 UNIT_TEST_PP_SRC_DIR:=F:\Programme\Cunit
-Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) $(IntermediateDirectory)/Quaternion.c$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.c$(ObjectSuffix) $(IntermediateDirectory)/Math3D.c$(ObjectSuffix) $(IntermediateDirectory)/Vektor4.c$(ObjectSuffix) $(IntermediateDirectory)/Quaternion.c$(ObjectSuffix) $(IntermediateDirectory)/Shader3D.c$(ObjectSuffix) $(IntermediateDirectory)/Onjekt3D.c$(ObjectSuffix) $(IntermediateDirectory)/Geometrien3D.c$(ObjectSuffix) $(IntermediateDirectory)/Kamera3D.c$(ObjectSuffix) 
 
 
 
@@ -121,6 +121,38 @@ $(IntermediateDirectory)/Quaternion.c$(DependSuffix): Quaternion.c
 
 $(IntermediateDirectory)/Quaternion.c$(PreprocessSuffix): Quaternion.c
 	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Quaternion.c$(PreprocessSuffix) "Quaternion.c"
+
+$(IntermediateDirectory)/Shader3D.c$(ObjectSuffix): Shader3D.c $(IntermediateDirectory)/Shader3D.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Shader3D.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Shader3D.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Shader3D.c$(DependSuffix): Shader3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Shader3D.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Shader3D.c$(DependSuffix) -MM "Shader3D.c"
+
+$(IntermediateDirectory)/Shader3D.c$(PreprocessSuffix): Shader3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Shader3D.c$(PreprocessSuffix) "Shader3D.c"
+
+$(IntermediateDirectory)/Onjekt3D.c$(ObjectSuffix): Onjekt3D.c $(IntermediateDirectory)/Onjekt3D.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Onjekt3D.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Onjekt3D.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Onjekt3D.c$(DependSuffix): Onjekt3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Onjekt3D.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Onjekt3D.c$(DependSuffix) -MM "Onjekt3D.c"
+
+$(IntermediateDirectory)/Onjekt3D.c$(PreprocessSuffix): Onjekt3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Onjekt3D.c$(PreprocessSuffix) "Onjekt3D.c"
+
+$(IntermediateDirectory)/Geometrien3D.c$(ObjectSuffix): Geometrien3D.c $(IntermediateDirectory)/Geometrien3D.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Geometrien3D.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Geometrien3D.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Geometrien3D.c$(DependSuffix): Geometrien3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Geometrien3D.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Geometrien3D.c$(DependSuffix) -MM "Geometrien3D.c"
+
+$(IntermediateDirectory)/Geometrien3D.c$(PreprocessSuffix): Geometrien3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Geometrien3D.c$(PreprocessSuffix) "Geometrien3D.c"
+
+$(IntermediateDirectory)/Kamera3D.c$(ObjectSuffix): Kamera3D.c $(IntermediateDirectory)/Kamera3D.c$(DependSuffix)
+	$(CC) $(SourceSwitch) "D:/gitprogramme/CTest/Kamera3D.c" $(CFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Kamera3D.c$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Kamera3D.c$(DependSuffix): Kamera3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Kamera3D.c$(ObjectSuffix) -MF$(IntermediateDirectory)/Kamera3D.c$(DependSuffix) -MM "Kamera3D.c"
+
+$(IntermediateDirectory)/Kamera3D.c$(PreprocessSuffix): Kamera3D.c
+	@$(CC) $(CFLAGS) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Kamera3D.c$(PreprocessSuffix) "Kamera3D.c"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

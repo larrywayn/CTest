@@ -1,2 +1,10 @@
 .clang
 .codelite
+compile_commands.json
+CTest.mk
+CTest.project
+CTest.txt
+CTest.workspace
+*.c.o
+*.c.o.d
+*.d

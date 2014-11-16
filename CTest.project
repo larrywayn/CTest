@@ -27,6 +27,14 @@
     <File Name="Vektor4.c"/>
     <File Name="Quaternion.c"/>
     <File Name="Quaternion.h"/>
+    <File Name="Shader3D.h"/>
+    <File Name="Shader3D.c"/>
+    <File Name="Onjekt3D.h"/>
+    <File Name="Onjekt3D.c"/>
+    <File Name="Geometrien3D.h"/>
+    <File Name="Geometrien3D.c"/>
+    <File Name="Kamera3D.h"/>
+    <File Name="Kamera3D.c"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
