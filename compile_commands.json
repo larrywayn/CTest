@@ -1,9 +1,0 @@
-[{
-  "file": "D:\\gitprogramme\\CTest\\main.c",
-  "directory": "D:\\gitprogramme\\CTest",
-  "command": "F:/Programme/MiniGW/bin/gcc.exe  -c D:\\gitprogramme\\CTest\\main.c -o D:\\gitprogramme\\CTest\\main.c.o  -g  -O0  -Wall -I. -ID:/glfw32/include/ -ID:/glfw64/include/"
- }, {
-  "file": "D:\\gitprogramme\\test\\main.c",
-  "directory": "D:\\gitprogramme\\test",
-  "command": "F:/Programme/MiniGW/bin/gcc.exe  -c D:\\gitprogramme\\test\\main.c -o D:\\gitprogramme\\test\\main.c.o  -g  -Wall  -O0  Der Befehl \"pkg-config\" ist entweder falsch geschrieben oder\nkonnte nicht gefunden werden.\n -I. -I."
- }]
